@@ -6,8 +6,17 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F399B5B82E83DE440081B895 /* FindSurface-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = F399B5B72E83DE440081B895 /* FindSurface-iOS */; };
+		F399B5BB2E83DE5A0081B895 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = F399B5BA2E83DE5A0081B895 /* DequeModule */; };
+		F399B5BD2E83DEAD0081B895 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F399B5BC2E83DEAD0081B895 /* Settings.bundle */; };
+		F399B5F92E83E55A0081B895 /* ARFeaturePointFindSurface.icon in Resources */ = {isa = PBXBuildFile; fileRef = F399B5F82E83E55A0081B895 /* ARFeaturePointFindSurface.icon */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		F399B5A82E83DDAE0081B895 /* ARFeaturePointFindSurface.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARFeaturePointFindSurface.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F399B5BC2E83DEAD0081B895 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F399B5F82E83E55A0081B895 /* ARFeaturePointFindSurface.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = ARFeaturePointFindSurface.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +32,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F399B5B82E83DE440081B895 /* FindSurface-iOS in Frameworks */,
+				F399B5BB2E83DE5A0081B895 /* DequeModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,8 +43,10 @@
 		F399B59F2E83DDAE0081B895 = {
 			isa = PBXGroup;
 			children = (
+				F399B5BC2E83DEAD0081B895 /* Settings.bundle */,
 				F399B5AA2E83DDAE0081B895 /* ARFeaturePointFindSurface */,
 				F399B5A92E83DDAE0081B895 /* Products */,
+				F399B5F82E83E55A0081B895 /* ARFeaturePointFindSurface.icon */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +78,8 @@
 			);
 			name = ARFeaturePointFindSurface;
 			packageProductDependencies = (
+				F399B5B72E83DE440081B895 /* FindSurface-iOS */,
+				F399B5BA2E83DE5A0081B895 /* DequeModule */,
 			);
 			productName = ARFeaturePointFindSurface;
 			productReference = F399B5A82E83DDAE0081B895 /* ARFeaturePointFindSurface.app */;
@@ -94,6 +109,10 @@
 			);
 			mainGroup = F399B59F2E83DDAE0081B895;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F399B5B62E83DE440081B895 /* XCRemoteSwiftPackageReference "FindSurface-iOS" */,
+				F399B5B92E83DE5A0081B895 /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F399B5A92E83DDAE0081B895 /* Products */;
 			projectDirPath = "";
@@ -109,6 +128,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F399B5F92E83E55A0081B895 /* ARFeaturePointFindSurface.icon in Resources */,
+				F399B5BD2E83DEAD0081B895 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,24 +270,25 @@
 		F399B5B42E83DDAF0081B895 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ARFeaturePointFindSurface;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to scan your surroundings in order to provide augmented reality experiences and measurements. Camera data is only used for real-time environment understanding and is not stored or shared.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = curvsurf.sgkim.ARFeaturePointFindSurface;
+				PRODUCT_BUNDLE_IDENTIFIER = curvsurf.samples.ARFeaturePointFindSurface;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -281,24 +303,25 @@
 		F399B5B52E83DDAF0081B895 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ARFeaturePointFindSurface;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to scan your surroundings in order to provide augmented reality experiences and measurements. Camera data is only used for real-time environment understanding and is not stored or shared.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = curvsurf.sgkim.ARFeaturePointFindSurface;
+				PRODUCT_BUNDLE_IDENTIFIER = curvsurf.samples.ARFeaturePointFindSurface;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -332,6 +355,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F399B5B62E83DE440081B895 /* XCRemoteSwiftPackageReference "FindSurface-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://www.github.com/CurvSurf/FindSurface-iOS.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		F399B5B92E83DE5A0081B895 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F399B5B72E83DE440081B895 /* FindSurface-iOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F399B5B62E83DE440081B895 /* XCRemoteSwiftPackageReference "FindSurface-iOS" */;
+			productName = "FindSurface-iOS";
+		};
+		F399B5BA2E83DE5A0081B895 /* DequeModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F399B5B92E83DE5A0081B895 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = DequeModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F399B5A02E83DDAE0081B895 /* Project object */;
 }
