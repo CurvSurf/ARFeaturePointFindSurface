@@ -8,14 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @Environment(\.scenePhase) private var scenePhase
+    
+    @Environment(AppState.self) private var state
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        @Bindable var state = state
+        ZStack {
+            MetalView(delegate: state)
+                .ignoresSafeArea(edges: .all)
+            
+            UserInterfaceView()
         }
-        .padding()
+        .trackingOrientation($state.orientation)
+        .onChange(of: scenePhase, initial: true) {
+            switch scenePhase {
+            case .inactive, .background: state.viewDidDisappear()
+            case .active:                state.viewDidAppear()
+            @unknown default: break
+            }
+        }
     }
 }
 

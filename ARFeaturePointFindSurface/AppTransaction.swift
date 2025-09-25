@@ -10,5 +10,6 @@ enum AppTransaction {
     case addSphere
     case addCylinder
     case addCone
-    case addTorus(_ isPartial: Bool)
+    case addTorus
+    case addPartialTorus
 }

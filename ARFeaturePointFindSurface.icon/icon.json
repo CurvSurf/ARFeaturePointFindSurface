@@ -6,17 +6,13 @@
     {
       "layers" : [
         {
-          "blend-mode" : "normal",
-          "fill" : "automatic",
-          "glass" : false,
-          "hidden" : false,
-          "image-name" : "fp_circle 3.svg",
-          "name" : "fp_circle 3",
+          "image-name" : "FP-logo 2.svg",
+          "name" : "FP-logo 2",
           "position" : {
-            "scale" : 1,
+            "scale" : 2,
             "translation-in-points" : [
-              160,
-              400
+              -400,
+              -380
             ]
           }
         },

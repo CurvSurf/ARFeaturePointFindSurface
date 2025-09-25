@@ -10,14 +10,10 @@ import UIKit
 
 extension UIInterfaceOrientation {
     static var currentValue: UIInterfaceOrientation {
-        let windowScene = UIApplication.shared.connectedScenes
+        return UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
-            .first(where: { $0.activationState == .foregroundActive })
-        
-        if let windowScene {
-            return windowScene.effectiveGeometry.interfaceOrientation
-        } else {
-            return .unknown
-        }
+            .flatMap { $0.windows }
+            .first(where: { $0.isKeyWindow })?.windowScene?.effectiveGeometry
+            .interfaceOrientation ?? UIApplication.shared.statusBarOrientation
     }
 }

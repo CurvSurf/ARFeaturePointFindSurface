@@ -8,7 +8,7 @@
 import SwiftUI
 
 fileprivate struct DisableGlassEffectEnvironmentKey: EnvironmentKey {
-    static var defaultValue: Bool = true
+    static var defaultValue: Bool = false
 }
 
 extension EnvironmentValues {

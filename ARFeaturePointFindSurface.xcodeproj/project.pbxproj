@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F36820CF2E8526BC00611251 /* ARFeaturePointFindSurface.icon in Resources */ = {isa = PBXBuildFile; fileRef = F36820CE2E8526BC00611251 /* ARFeaturePointFindSurface.icon */; };
 		F399B5B82E83DE440081B895 /* FindSurface-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = F399B5B72E83DE440081B895 /* FindSurface-iOS */; };
 		F399B5BB2E83DE5A0081B895 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = F399B5BA2E83DE5A0081B895 /* DequeModule */; };
 		F399B5BD2E83DEAD0081B895 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F399B5BC2E83DEAD0081B895 /* Settings.bundle */; };
-		F399B5F92E83E55A0081B895 /* ARFeaturePointFindSurface.icon in Resources */ = {isa = PBXBuildFile; fileRef = F399B5F82E83E55A0081B895 /* ARFeaturePointFindSurface.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F36820CE2E8526BC00611251 /* ARFeaturePointFindSurface.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = ARFeaturePointFindSurface.icon; sourceTree = "<group>"; };
 		F399B5A82E83DDAE0081B895 /* ARFeaturePointFindSurface.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARFeaturePointFindSurface.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F399B5BC2E83DEAD0081B895 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		F399B5F82E83E55A0081B895 /* ARFeaturePointFindSurface.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = ARFeaturePointFindSurface.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -46,7 +46,7 @@
 				F399B5BC2E83DEAD0081B895 /* Settings.bundle */,
 				F399B5AA2E83DDAE0081B895 /* ARFeaturePointFindSurface */,
 				F399B5A92E83DDAE0081B895 /* Products */,
-				F399B5F82E83E55A0081B895 /* ARFeaturePointFindSurface.icon */,
+				F36820CE2E8526BC00611251 /* ARFeaturePointFindSurface.icon */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,7 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F399B5F92E83E55A0081B895 /* ARFeaturePointFindSurface.icon in Resources */,
+				F36820CF2E8526BC00611251 /* ARFeaturePointFindSurface.icon in Resources */,
 				F399B5BD2E83DEAD0081B895 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
