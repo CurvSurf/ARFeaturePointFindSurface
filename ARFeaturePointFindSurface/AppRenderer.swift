@@ -317,6 +317,8 @@ final class AppRenderer {
 //        rawFeaturePointRenderer.draw(encoder: encoder)
         pointCloudRenderer.draw(encoder: encoder, buffer: pointCloudBuffers[inFlightIndex])
         
+        inlierPointRenderer.draw(encoder: encoder, buffers: inlierPointBuffers)
+        
         planeRenderer.draw(planes: planes, encoder: encoder)
         sphereRenderer.draw(spheres: spheres, encoder: encoder)
         cylinderRenderer.draw(cylinders: cylinders, encoder: encoder)
@@ -333,8 +335,6 @@ final class AppRenderer {
         case .partialTorus: partialTorusRenderer.draw(torus: previewPartialTorus, encoder: encoder)
         default: break
         }
-        
-        inlierPointRenderer.draw(encoder: encoder, buffers: inlierPointBuffers)
         
         encoder.endEncoding()
         

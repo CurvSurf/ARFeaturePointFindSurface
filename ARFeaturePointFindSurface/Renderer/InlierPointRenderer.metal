@@ -42,6 +42,7 @@ namespace inlier_point_renderpass {
         
         float distance = length(point_coord - float2(0.5));
         if (distance > 0.5) discard_fragment();
+        if (distance > 0.4) return float4(0, 0, 0, point_color.w);
         
         return point_color;
     }

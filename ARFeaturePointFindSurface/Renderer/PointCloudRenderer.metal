@@ -46,6 +46,7 @@ namespace point_cloud_renderpass {
         
         float distance = length(point_coord - float2(0.5));
         if (distance > 0.5) discard_fragment();
+        if (distance > 0.4) return float4(0, 0, 0, point_color.w);
         
         return float4(mix(point_color.xyz, float3(1, 0, 0), in.vertexID == picked_index), point_color.w);
     }
