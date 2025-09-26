@@ -35,7 +35,7 @@ struct RecordingToggleButton: View {
             }
             .padding(16)
             .tryGlassEffect(Circle())
-            .onLongPressGesture(minimumDuration: 5.0) {
+            .onLongPressGesture {
                 state.toastMessage = "🗑️ Points cleared!"
                 state.clearPoints()
             }
