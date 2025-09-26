@@ -62,13 +62,15 @@ struct RadiusControlView: View {
                 if !magnifying {
                     oldRatio = state.seedRadiusRatio
                 }
-                state.seedRadiusRatio = min(max(oldRatio * CGFloat(event.magnification), 0.01), 1.0)
+                let magnification = pow(event.magnification, 1.1)
+                state.seedRadiusRatio = min(max(oldRatio * magnification, 0.01), 1.0)
             }
             .updating($magnifying) { _, state, _ in
                 state = true
             }
             .onEnded { event in
-                state.seedRadiusRatio = min(max(oldRatio * CGFloat(event.magnification), 0.01), 1.0)
+                let magnification = pow(event.magnification, 1.1)
+                state.seedRadiusRatio = min(max(oldRatio * magnification, 0.01), 1.0)
             }
     }
 }
