@@ -164,6 +164,9 @@ final class AppState: MetalViewDelegate {
     var seedRadiusRatio: CGFloat = .zero
     var probeRadiusRatio: CGFloat = .zero
     
+    @ObservationIgnored
+    private var latestFound: FindSurface.Result? = nil
+    
     private(set) var transactions: [AppTransaction] = []
     
     private func detectGeometries(_ camera: ARCamera) {
@@ -184,7 +187,7 @@ final class AppState: MetalViewDelegate {
         
         Task {
             do {
-                let result = try await FindSurface.instance.perform {
+                var result = try await FindSurface.instance.perform {
                     let tanHalfFovy = camera.tanHalfFovy
                     let seedRadius = tanHalfFovy * Float(seedRadiusRatio) * pickedDepth
                     FindSurface.instance.seedRadius = seedRadius
@@ -192,11 +195,19 @@ final class AppState: MetalViewDelegate {
                     return (pointcloud, pickedIndex)
                 }
                 
-                guard let result else {
+                if result == nil {
                     if hasToSaveOne {
-                        toastMessage = "Nothing captured, Try again."
+                        if let latestFound {
+                            result = latestFound
+                        } else {
+                            toastMessage = "Nothing captured, Try again."
+                            return
+                        }
+                    } else {
+                        return
                     }
-                    return
+                } else {
+                    latestFound = result
                 }
                 
                 switch result {
@@ -205,6 +216,7 @@ final class AppState: MetalViewDelegate {
                         toastMessage = String(format: "Captured plane! (rms error: %.1f cm)", rmsError * 100)
                         renderer.appendPlane(plane, inliers)
                         transactions.append(.addPlane)
+                        latestFound = nil
                     } else {
                         renderer.updatePreview(plane)
                     }
@@ -213,6 +225,7 @@ final class AppState: MetalViewDelegate {
                         toastMessage = String(format: "Captured sphere! (rms error: %.1f cm)", rmsError * 100)
                         renderer.appendSphere(sphere, inliers)
                         transactions.append(.addSphere)
+                        latestFound = nil
                     } else {
                         renderer.updatePreview(sphere)
                     }
@@ -221,6 +234,7 @@ final class AppState: MetalViewDelegate {
                         toastMessage = String(format: "Captured cylinder! (rms error: %.1f cm)", rmsError * 100)
                         renderer.appendCylinder(cylinder, inliers)
                         transactions.append(.addCylinder)
+                        latestFound = nil
                     } else {
                         renderer.updatePreview(cylinder)
                     }
@@ -229,6 +243,7 @@ final class AppState: MetalViewDelegate {
                         toastMessage = String(format: "Captured cone! (rms error: %.1f cm)", rmsError * 100)
                         renderer.appendCone(cone, inliers)
                         transactions.append(.addCone)
+                        latestFound = nil
                     } else {
                         renderer.updatePreview(cone)
                     }
@@ -237,6 +252,7 @@ final class AppState: MetalViewDelegate {
                         toastMessage = String(format: "Captured torus! (rms error: %.1f cm)", rmsError * 100)
                         let isPartial = renderer.appendTorus(torus, inliers)
                         transactions.append(isPartial ? .addPartialTorus : .addTorus)
+                        latestFound = nil
                     } else {
                         renderer.updatePreview(torus, inliers)
                     }
@@ -246,6 +262,7 @@ final class AppState: MetalViewDelegate {
                     } else {
                         renderer.setPreviewNone()
                     }
+                    latestFound = nil
                 }
                 
             } catch {
