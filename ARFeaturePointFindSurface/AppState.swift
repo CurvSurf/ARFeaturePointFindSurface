@@ -46,7 +46,6 @@ final class AppState: MetalViewDelegate {
         /* do nothing */
     }
     
-    
     // -- MARK: View resizing
     @ObservationIgnored
     private var shouldUpdateDisplayTransform: Bool = false
@@ -195,7 +194,15 @@ final class AppState: MetalViewDelegate {
                     return (pointcloud, pickedIndex)
                 }
                 
-                if result == nil {
+                if result != nil {
+                    if hasToSaveOne {
+                        if case .none(_) = result!, let latestFound {
+                            result = latestFound
+                        }
+                    } else {
+                        latestFound = result
+                    }
+                } else {
                     if hasToSaveOne {
                         if let latestFound {
                             result = latestFound
@@ -206,8 +213,6 @@ final class AppState: MetalViewDelegate {
                     } else {
                         return
                     }
-                } else {
-                    latestFound = result
                 }
                 
                 switch result {

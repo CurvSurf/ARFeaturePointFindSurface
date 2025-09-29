@@ -129,7 +129,7 @@ final class AppRenderer {
         self.capturedImageRenderer.transform = self.transform
         self.rawFeaturePointRenderer.pointColor = .rawFeaturePointColor
         self.rawFeaturePointRenderer.transform = self.transform
-        self.pointCloudRenderer.pointColor = .pointCloudColor
+        self.pointCloudRenderer.pointColor = currentColorSet.pointCloud
         self.pointCloudRenderer.transform = self.transform
         self.planeRenderer.transform = self.transform
         self.sphereRenderer.transform = self.transform
@@ -243,21 +243,21 @@ final class AppRenderer {
     func appendPlane(_ plane: Plane, _ inliers: [simd_float3]) {
         let buffer = PlaneBuffer(device: device, plane: plane)
         planes.append(buffer)
-        let inlierBuffer = InlierPointBuffer(device, inliers, simd_float4(.planeInlierColor, 1))
+        let inlierBuffer = InlierPointBuffer(device, inliers, simd_float4(currentColorSet.planeInlier, 1))
         inlierPointBuffers.append(inlierBuffer)
     }
     
     func appendSphere(_ sphere: Sphere, _ inliers: [simd_float3]) {
         let buffer = SphereBuffer(device: device, sphere: sphere)
         spheres.append(buffer)
-        let inlierBuffer = InlierPointBuffer(device, inliers, simd_float4(.sphereInlierColor, 1))
+        let inlierBuffer = InlierPointBuffer(device, inliers, simd_float4(currentColorSet.sphereInlier, 1))
         inlierPointBuffers.append(inlierBuffer)
     }
     
     func appendCylinder(_ cylinder: Cylinder, _ inliers: [simd_float3]) {
         let buffer = CylinderBuffer(device: device, cylinder: cylinder)
         cylinders.append(buffer)
-        let inlierBuffer = InlierPointBuffer(device, inliers, simd_float4(.cylinderInlierColor, 1))
+        let inlierBuffer = InlierPointBuffer(device, inliers, simd_float4(currentColorSet.cylinderInlier, 1))
         inlierPointBuffers.append(inlierBuffer)
     }
     

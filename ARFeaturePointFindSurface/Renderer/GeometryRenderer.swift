@@ -43,7 +43,7 @@ extension PlaneBuffer {
         self.upperLeft = plane.topLeft
         self.lowerRight = plane.bottomRight
         self.upperRight = plane.topRight
-        self.color = .planeColor
+        self.color = currentColorSet.plane
         self.lineColor = .zero
         self.opacity = isPreview ? 0.2 : 0.6
     }
@@ -58,7 +58,7 @@ extension SphereBuffer {
     func update(from sphere: Sphere, isPreview: Bool = false) {
         self.position = sphere.center
         self.radius = sphere.radius
-        self.color = .sphereColor
+        self.color = currentColorSet.sphere
         self.lineColor = .zero
         self.opacity = isPreview ? 0.2 : 0.6
     }
@@ -74,7 +74,7 @@ extension CylinderBuffer {
         self.top = cylinder.top
         self.bottom = cylinder.bottom
         self.radius = cylinder.radius
-        self.color = .cylinderColor
+        self.color = currentColorSet.cylinder
         self.lineColor = .zero
         self.opacity = isPreview ? 0.2 : 0.6
     }
