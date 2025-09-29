@@ -11,7 +11,7 @@ The project retrieves [`rawFeaturePoints`](https://developer.apple.com/documenta
 > **> How is this project different from [the previous project?](https://github.com/CurvSurf/FindSurface-GUIDemo-iOS/tree/main)**  
 > The previous project required a LiDAR-equipped device, whereas this one supports **general iOS devices** (iPhone, iPad) that support ARKit, regardless whether it has a LiDAR sensor.
 
-This demo runs on iPhone or iPad devices with iOS/iPadOS 18.6 or later. It isn’t mandatory—you can simply pull the code from this repository and lower the OS version directly in your project settings.  
+This demo runs on iPhone or iPad devices with iOS/iPadOS 18.6 or later, with or without LiDAR sensors. The OS version isn’t mandatory—you can simply pull the code from this repository and lower the OS version directly in your project settings.  
 
 See what it looks like in action in the video below.
 
