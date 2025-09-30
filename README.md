@@ -30,13 +30,13 @@ Click the thumbnail above or [here](https://www.youtube.com/watch?v=SIdQRiLj2jY)
 
 ## User Interface
 
-![guide.png](https://gist.github.com/user-attachments/assets/83c45cc5-3c89-4625-a632-d1709f82b8dc)
+![guide.png](images/guide.png)
 
 1. When the app starts, a screen requesting you to scan your surroundings appears (as shown above).  
    This is a pre-stabilization step to ensure smooth AR experience by allowing the device’s motion tracking to stabilize.  
    Move your device smoothly as if scanning the surroundings with the camera. Once the progress bar at the bottom of the popup fills completely, the stabilization phase is complete.
 
-![advice.png](https://gist.github.com/user-attachments/assets/5cfa0f89-ae54-4c52-872b-5ba2e41b2a54)
+![advice.png](images/advice.png)
 
 2. During the stabilization phase, the progress may not advance and the guidance window will remain if:  
    - The device is stationary and the camera keeps seeing the same image;  
@@ -47,7 +47,7 @@ Click the thumbnail above or [here](https://www.youtube.com/watch?v=SIdQRiLj2jY)
 
    *Because [ARKit’s `rawFeaturePoints`](https://developer.apple.com/documentation/arkit/arframe/rawfeaturepoints) are only detected within about 10m, outdoor use of this app may be somewhat limited.*
 
-![main-ui.png](https://gist.github.com/user-attachments/assets/aa21d65a-e046-47ec-8251-8a1f85c5d82d)
+![main-ui.png](images/main-ui.png)
 
 3. After stabilization, the main screen appears (as shown above):  
 
