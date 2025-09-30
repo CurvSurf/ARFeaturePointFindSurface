@@ -56,17 +56,30 @@ Click the thumbnail above or [here](https://www.youtube.com/watch?v=SIdQRiLj2jY)
    - **③**: The green dotted circle represents the approximate size of the geometry to detect. You can adjust its size with a pinch gesture. Generally, setting it slightly larger than half the size of the actual object is recommended. (Note: precision is not critical here.) A tutorial window in the top-right corner explains these details; you can dismiss it if no longer needed. Checking *“Don’t show again”* ensures the popup will not appear even after restarting the app.  
    - **④**: To detect geometry, ensure that some of the nearby points fall inside the purple dashed circle. The size of this circle cannot be adjusted.  
    - **⑤**: From top to bottom, the following controls are available:  
-     - **Point collecting toggle button**: Enables/disables point collection from the environment. Default is enabled at app launch (stop button visible). Long pressing the button (holding for about 0.5 seconds) clears the point buffer collected so far.  
-     - **FindSurface toggle button**: Runs FindSurface detection on every frame and shows a preview of the detected geometry at the current pointing location. Default is enabled at app launch (disabled state shown with grayscale icon).  
+     - **Point collecting toggle button**: Enables/disables point collection from the environment. The toggle is set to `enabled` by default (stop button visible). Long pressing the button (holding for about 0.5 seconds) clears the point buffer collected so far.  
+     - **FindSurface toggle button**: Runs FindSurface detection on every frame and shows a preview of the detected geometry at the current pointing location. The toggle is set to `enabled` by default (disabled state shown with grayscale icon).  
      - **Capture button**: Captures the currently previewed geometry and places it as a fixed AR overlay in space.  
      - **Undo button**: Removes the most recently captured geometry. Long pressing the button (holding for about 0.5 seconds) removes all captured geometry.  
 
 *Note: Unlike the image shown above, in runtime the background will display the live scene from the device’s camera instead of a white background.*  
 
 
+### When Geometry or Point Clouds Appear in the Wrong Place
+
+Unlike the [VisionOS samples](https://github.com/CurvSurf/FindSurface-visionOS?tab=readme-ov-file), which demonstrate persistent objects using a WorldAnchor, this app does not provide a feature to reload previously placed content after the device restarts or the app is terminated and relaunched. As long as the app remains in memory, it may resume from an inactive state and show the previous content as-is, but this is not always guaranteed.
+
+In addition, as is sometimes seen in AR applications in general, when the running app becomes inactive (for example, when the Home button is pressed or the screen turns off briefly) and then returns, the following issues may occur:
+
+- **AR content appears in the wrong place instead of where it was originally placed:**  
+  Typically, ARKit can estimate the device’s movement during the pause–resume interval and restore the previous origin. If it fails, however, a new origin may be created at a different location, which causes the reference point of previously rendered content to shift. Scanning the surroundings may help ARKit rediscover the previously scanned area and restore the origin, but this is not guaranteed. In such cases, it is recommended to press and hold the **Point Collecting toggle button** and the **Undo button** for more than 0.5 seconds to reset and start a new session.
+
+- **A drifting effect where content appears to endlessly float away:**  
+  This can occur when motion tracking has not yet stabilized. It is recommended to scan the surroundings until the tracking stabilizes, then reset as described above, or alternatively, completely restart the app (see [this guide](https://support.apple.com/en-az/guide/iphone/iph83bfec492/ios) for instructions).
+
+
 ## About Filtering `rawFeaturePoints`
 
-ARKit’s [`rawFeaturePoints`](https://developer.apple.com/documentation/arkit/arframe/rawfeaturepoints) provides, for each frame, the feature points detected in that frame along with the identifier assigned to each point. If the same identifier appears in more than one frame, this means ARKit considers two features detected at different frames to be samples of the same identity. In other words, they are different samples of the same feature. 
+ARKit’s [`rawFeaturePoints`](https://developer.apple.com/documentation/arkit/arframe/rawfeaturepoints) provides, for each frame, the feature points detected in that frame along with the identifier assigned to each point. If the same identifier appears in more than one frame, this means ARKit considers two features detected at different frames to be samples of the same identity. In other words, they are different samples of the same feature.  
 
 ![arkit_point.png](https://github.com/CurvSurf/ARKitPointCloudRecorder/blob/master/README_IMG/arkit_point.png?raw=true)
 
@@ -140,6 +153,16 @@ Click the thumbnail above or [here](https://www.youtube.com/watch?v=SIdQRiLj2jY)
   - Undo button: 가장 최근에 검출한 captured geometry를 제거합니다. 약 0.5초간 길게 누르면 모든 geometry를 제거합니다.
 
 *위의 이미지와 달리, 실제 런타임에서는 흰 배경 대신에 사용자의 장치 카메라가 바라보는 장면이 나타납니다.*
+
+### Geometry 또는 point cloud가 올바르지 않은 위치에 나타날 경우
+
+이 앱은 [VisionOS samples](https://github.com/CurvSurf/FindSurface-visionOS?tab=readme-ov-file)에서 WorldAnchor를 이용한 Persistent objects를 했던 것과 같이 장치가 재시작하거나 앱이 메모리에서 내려갔다가 재시작할 때에 이전에 있었던 컨텐츠를 다시 불러오는 기능을 제공하지 않습니다. 앱이 메모리에서 내려가지 않는 동안에는 비활성화 상태에서 다시 돌아왔을 때 이전 내용을 그대로 화면에 보여줄 수도 있지만, 항상 보장되는 것은 아닙니다.
+
+또한, 일반적으로 AR applications에서 가끔 볼 수 있는 문제로서, 실행중인 앱이 비활성화(홈 버튼을 누르거나 장치의 스크린이 잠시 꺼진 경우 등)되었다가 다시 돌아올 때, 다음과 같은 현상이 나타나는 경우가 있습니다:
+
+- AR contents가 원래 있던 곳 대신에 엉뚱한 위치에 나타나는 경우: 보통은 ARKit가 세션의 pause와 resume 사이에 일어난 장치의 위치 변화를 파악하여 이전의 원점(origin)을 찾아내지만, 이에 실패할 경우에는 다른 위치에 새로운 원점이 생기면서 이전에 렌더링하기로 약속했던 위치의 기준점이 바뀌기 때문에 생기는 문제입니다. 주변을 스캔하다보면 ARKit가 이전에 스캔했던 위치를 발견하고 원점을 복원하는 경우도 있지만, 항상 보장되지는 않습니다. 그러한 경우에는 **Point collecting toggle button**과 **Undo button**을 0.5초 이상 길게 눌러서 초기화하고 새로 작업을 시작하기를 권장합니다.
+
+- 끝없이 어딘가를 향해 떠내려가듯이 draft 현상을 보이는 경우: Motion tracking이 안정화되지 않은 경우 발생합니다. 주변을 스캔해서 안정화한 뒤 위의 방법처럼 버튼을 길게 눌러 초기화하거나, 혹은 [여기](https://support.apple.com/en-az/guide/iphone/iph83bfec492/ios)를 참조하여 앱을 완전히 재시작하는 것을 권장합니다.
 
 ## About Filtering `rawFeaturePoints`
 
