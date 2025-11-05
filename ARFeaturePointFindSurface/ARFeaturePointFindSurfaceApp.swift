@@ -27,7 +27,7 @@ struct ARFeaturePointFindSurfaceApp: App {
                 .onChange(of: scenePhase) {
                     if scenePhase == .active {
                         findSurface.measurementAccuracy = 0.10
-                        findSurface.meanDistance = 0.10
+                        findSurface.meanDistance = 0.50
                     }
                 }
                 .environment(state)
