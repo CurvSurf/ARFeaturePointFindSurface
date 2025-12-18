@@ -2,6 +2,8 @@
 
 **Curv*Surf* FindSurface™** GUIDemo using ARKit raw feature points for iOS (Swift)
 
+[FindSurface](https://github.com/CurvSurf/FindSurface) / [FindSurface-iOS](https://github.com/CurvSurf/FindSurface-iOS)
+
 ## Overview
 
 This demo app showcases a real-time application of FindSurface to detect geometric shapes in point clouds provided by ARKit.
