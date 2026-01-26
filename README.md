@@ -21,6 +21,12 @@ See what it looks like in action in the video below.
 
 Click the thumbnail above or [here](https://www.youtube.com/watch?v=SIdQRiLj2jY) to watch the video on YouTube.
 
+> **NOTE**
+>
+> Around December of 2025, it appears that Apple expanded the effective range of the point cloud (`rawFeaturePoints`) accompanying motion tracking from the previous 10 m to roughly 65 m (estimation). Although this change was not mentioned in any official Apple channel, our app can now extract geometry from walls of buildings or **large domes** (check the video below!) that are farther than 10 m away, if provided that the scan is sufficient.
+>
+> [![video-large-dome](https://img.youtube.com/vi/W2laF37YdB4/maxresdefault.jpg)](https://www.youtube.com/watch?v=W2laF37YdB4)
+
 ## Features
 
 - Real-time detection of geometric surfaces in camera scenes;  
