@@ -77,9 +77,7 @@ final class FeatureCompressor {
                 bin.removeFirst()
             }
             
-            if bin.count == 1 {
-                pointList[id] = point
-            } else {
+            if bin.count >= 5 {
                 let f = removeOutliersInGaussianDistribution(bin.map { simd_double3($0) }, 2.0)
                 let p = f.reduce(.zero, +) / Double(f.count)
                 pointList[id] = simd_float3(p)

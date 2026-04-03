@@ -71,6 +71,9 @@ Click the thumbnail above or [here](https://www.youtube.com/watch?v=SIdQRiLj2jY)
 
 *Note: Unlike the image shown above, in runtime the background will display the live scene from the device’s camera instead of a white background.*  
 
+4. Miscellaneous
+
+-	The points shown on the screen are not individual `rawFeaturePoints`. Instead, they are positions obtained by filtering out outliers from points with the same ID and then averaging the remaining samples. If the samples are less than 5, that samples are neither displayed on the screen nor included as input for geometry detection. For more details about filtering, refer to [About Filtering `rawFeaturePoints`](#about-filtering-rawfeaturepoints).
 
 ### When Geometry or Point Clouds Appear in the Wrong Place
 
